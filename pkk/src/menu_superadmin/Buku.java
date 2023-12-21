@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -17,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author luthf
  */
-public class Buku extends javax.swing.JFrame {
+public final class Buku extends javax.swing.JFrame {
     
     String nilaiTanggal;
 
@@ -27,6 +28,7 @@ public class Buku extends javax.swing.JFrame {
     public Buku() {
         initComponents();
         loadTable();
+        tanggal();
     }
     
      private void tanggal() {
@@ -300,6 +302,8 @@ public class Buku extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Tanggal Pembelian");
+
+        tanggal_beli.setDateFormatString("y, MMM d");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -581,8 +585,15 @@ public class Buku extends javax.swing.JFrame {
         String jdlbuku = tabledor.getValueAt(baris, 1).toString();
         judulBuku.setText(jdlbuku);
         judulBuku.setForeground(new Color(0, 0, 0));
-        String tgl_beli = tabledor.getValueAt(baris, 2).toString();
-        tanggal_beli.setDateFormatString(tgl_beli);
+        String b = tabledor.getValueAt(baris, 2).toString();
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = dateFormat.parse(b);
+            tanggal_beli.setDate(date);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Format tanggal tidak valid", "Error", JOptionPane.ERROR_MESSAGE);
+        }
         tanggal_beli.setForeground(new Color(0, 0, 0));
         String penerbitt = tabledor.getValueAt(baris, 3).toString();
         penerbit.setText(penerbitt);
