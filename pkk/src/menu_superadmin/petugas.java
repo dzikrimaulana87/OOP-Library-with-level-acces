@@ -95,11 +95,11 @@ public class Petugas extends javax.swing.JFrame implements AccesSuperAdmin{
         password = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabledor = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
+        btnKeluar = new javax.swing.JButton();
         level = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -196,48 +196,48 @@ public class Petugas extends javax.swing.JFrame implements AccesSuperAdmin{
         });
         jScrollPane1.setViewportView(tabledor);
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Simpan");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSimpan.setBackground(new java.awt.Color(0, 0, 0));
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSimpanActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Hapus");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnHapus.setBackground(new java.awt.Color(0, 0, 0));
+        btnHapus.setForeground(new java.awt.Color(255, 255, 255));
+        btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnHapusActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Edit");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnEdit.setBackground(new java.awt.Color(0, 0, 0));
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnEditActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(0, 0, 0));
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Reset");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnReset.setBackground(new java.awt.Color(0, 0, 0));
+        btnReset.setForeground(new java.awt.Color(255, 255, 255));
+        btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnResetActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(0, 0, 0));
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Keluar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnKeluar.setBackground(new java.awt.Color(0, 0, 0));
+        btnKeluar.setForeground(new java.awt.Color(255, 255, 255));
+        btnKeluar.setText("Keluar");
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnKeluarActionPerformed(evt);
             }
         });
 
@@ -263,15 +263,15 @@ public class Petugas extends javax.swing.JFrame implements AccesSuperAdmin{
                         .addGap(85, 85, 85)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton2)
+                                .addComponent(btnSimpan)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)
+                                .addComponent(btnHapus)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4)
+                                .addComponent(btnEdit)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton5)
+                                .addComponent(btnReset)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton6))
+                                .addComponent(btnKeluar))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(82, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -300,11 +300,11 @@ public class Petugas extends javax.swing.JFrame implements AccesSuperAdmin{
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(btnSimpan)
+                    .addComponent(btnHapus)
+                    .addComponent(btnEdit)
+                    .addComponent(btnReset)
+                    .addComponent(btnKeluar))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -340,7 +340,7 @@ public class Petugas extends javax.swing.JFrame implements AccesSuperAdmin{
         // TODO add your handling code here:
     }//GEN-LAST:event_id_petugasActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
         try{
             Statement state = handler_class.Koneksi.konek().createStatement();
@@ -352,12 +352,12 @@ public class Petugas extends javax.swing.JFrame implements AccesSuperAdmin{
         }
         loadTable();
         kosong();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSimpanActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
         kosong();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnResetActionPerformed
 
     private void id_petugasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_id_petugasFocusGained
         // TODO add your handling code here:
@@ -427,7 +427,7 @@ public class Petugas extends javax.swing.JFrame implements AccesSuperAdmin{
         }
     }//GEN-LAST:event_passwordFocusLost
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
         try{
             Statement state = handler_class.Koneksi.konek().createStatement();
@@ -439,9 +439,9 @@ public class Petugas extends javax.swing.JFrame implements AccesSuperAdmin{
         }
         loadTable();
         kosong();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnHapusActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         try{
             Statement state = handler_class.Koneksi.konek().createStatement();
@@ -453,13 +453,13 @@ public class Petugas extends javax.swing.JFrame implements AccesSuperAdmin{
         }
         loadTable();
         kosong();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnEditActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
         // TODO add your handling code here:
         new MenuUtamaSuperAdmin().show();
         dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnKeluarActionPerformed
 
     private void tabledorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabledorMouseClicked
         // TODO add your handling code here:
@@ -524,12 +524,12 @@ public class Petugas extends javax.swing.JFrame implements AccesSuperAdmin{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnKeluar;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnSimpan;
     private javax.swing.JTextField id_petugas;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

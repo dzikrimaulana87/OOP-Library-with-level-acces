@@ -51,7 +51,7 @@ public final class Pengembalian extends javax.swing.JFrame {
         Object[] baris = {"Kode Pengembalian", "Tanggal Pengembalian", "Kode Peminjaman", "Tanggal Peminjaman", "NIS", "Nama", "Kelas", "Kode Buku", "Nama Buku", "Jumlah Buku", "Keterlambatan", "Denda"};
         DefaultTableModel tablek = new DefaultTableModel(null, baris);
         tabledor.setModel(tablek);
-        String carii = jTextField8.getText();
+        String carii = cari.getText();
 
         try {
             Statement state = handler_class.Koneksi.konek().createStatement();
@@ -170,7 +170,7 @@ public final class Pengembalian extends javax.swing.JFrame {
         kodePengembalian = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabledor = new javax.swing.JTable();
-        jTextField8 = new javax.swing.JTextField();
+        cari = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnSimpan = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -222,7 +222,7 @@ public final class Pengembalian extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabledor);
 
-        jTextField8.setForeground(new java.awt.Color(153, 153, 153));
+        cari.setForeground(new java.awt.Color(153, 153, 153));
 
         jButton1.setText("Cari");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -412,7 +412,7 @@ public final class Pengembalian extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jumlahBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
                                 .addComponent(jButton1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -469,7 +469,7 @@ public final class Pengembalian extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jumlahBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -764,6 +764,7 @@ try {
     private javax.swing.JButton btnHitungDenda;
     private javax.swing.JButton btnKeluar;
     private javax.swing.JButton btnSimpan;
+    private javax.swing.JTextField cari;
     private javax.swing.JTextField denda;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
@@ -772,7 +773,6 @@ try {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField judulBuku;
     private javax.swing.JTextField jumlahBuku;
     private javax.swing.JTextField kelas;

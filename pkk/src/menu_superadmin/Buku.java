@@ -18,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
  * @author luthf
  */
 public class Buku extends javax.swing.JFrame {
+    
+    String nilaiTanggal;
 
     /**
      * Creates new form LogIn
@@ -25,6 +27,19 @@ public class Buku extends javax.swing.JFrame {
     public Buku() {
         initComponents();
         loadTable();
+    }
+    
+     private void tanggal() {
+        Date date = tanggal_beli.getDate();
+
+        if (date != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Format "tahun-bulan-tanggal"
+            nilaiTanggal = dateFormat.format(date);
+            System.out.println(nilaiTanggal);
+        } else {
+            nilaiTanggal = "0000-00-00";
+        }
+
     }
     
     private void cariin() {
@@ -80,22 +95,20 @@ public class Buku extends javax.swing.JFrame {
     }
     
     private void kosong(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");     
-        Date date = new Date();
-        kode_buku.setText("Kode Buku");
-        kode_buku.setForeground(new Color(153, 153, 153));
-        judul_buku.setText("Judul Buku");
-        judul_buku.setForeground(new Color(153, 153, 153));
-        tanggal_beli.setDate(date);
+
+        kodeBuku.setText("Kode Buku");
+        kodeBuku.setForeground(new Color(153, 153, 153));
+        judulBuku.setText("Judul Buku");
+        judulBuku.setForeground(new Color(153, 153, 153));
         tanggal_beli.setForeground(new Color(0, 0, 0));
         pengarang.setText("Pengarang");
         pengarang.setForeground(new Color(153, 153, 153));
         penerbit.setText("Penerbit");
         penerbit.setForeground(new Color(153, 153, 153));
-        tahun_terbit.setText("Tahun Terbit");
-        tahun_terbit.setForeground(new Color(153, 153, 153));
-        jumlah_buku.setText("Jumlah Buku");
-        jumlah_buku.setForeground(new Color(153, 153, 153));
+        tahunTerbit.setText("Tahun Terbit");
+        tahunTerbit.setForeground(new Color(153, 153, 153));
+        jumlahBuku.setText("Jumlah Buku");
+        jumlahBuku.setForeground(new Color(153, 153, 153));
         cari.setText("");
         loadTable();
         }
@@ -111,23 +124,23 @@ public class Buku extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        kode_buku = new javax.swing.JTextField();
-        judul_buku = new javax.swing.JTextField();
-        tahun_terbit = new javax.swing.JTextField();
+        kodeBuku = new javax.swing.JTextField();
+        judulBuku = new javax.swing.JTextField();
+        tahunTerbit = new javax.swing.JTextField();
         penerbit = new javax.swing.JTextField();
         pengarang = new javax.swing.JTextField();
-        jumlah_buku = new javax.swing.JTextField();
+        jumlahBuku = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabledor = new javax.swing.JTable();
         cari = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        tanggal_beli = new com.toedter.calendar.JDateChooser();
+        btnCari = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnBersih = new javax.swing.JButton();
+        btnKeluar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        tanggal_beli = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,44 +150,44 @@ public class Buku extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Data Buku");
 
-        kode_buku.setBackground(new java.awt.Color(208, 239, 239));
-        kode_buku.setForeground(new java.awt.Color(153, 153, 153));
-        kode_buku.setText("Kode Buku");
-        kode_buku.addFocusListener(new java.awt.event.FocusAdapter() {
+        kodeBuku.setBackground(new java.awt.Color(208, 239, 239));
+        kodeBuku.setForeground(new java.awt.Color(153, 153, 153));
+        kodeBuku.setText("Kode Buku");
+        kodeBuku.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                kode_bukuFocusGained(evt);
+                kodeBukuFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                kode_bukuFocusLost(evt);
+                kodeBukuFocusLost(evt);
             }
         });
 
-        judul_buku.setBackground(new java.awt.Color(208, 239, 239));
-        judul_buku.setForeground(new java.awt.Color(153, 153, 153));
-        judul_buku.setText("Judul Buku");
-        judul_buku.addFocusListener(new java.awt.event.FocusAdapter() {
+        judulBuku.setBackground(new java.awt.Color(208, 239, 239));
+        judulBuku.setForeground(new java.awt.Color(153, 153, 153));
+        judulBuku.setText("Judul Buku");
+        judulBuku.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                judul_bukuFocusGained(evt);
+                judulBukuFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                judul_bukuFocusLost(evt);
+                judulBukuFocusLost(evt);
             }
         });
-        judul_buku.addActionListener(new java.awt.event.ActionListener() {
+        judulBuku.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                judul_bukuActionPerformed(evt);
+                judulBukuActionPerformed(evt);
             }
         });
 
-        tahun_terbit.setBackground(new java.awt.Color(208, 239, 239));
-        tahun_terbit.setForeground(new java.awt.Color(153, 153, 153));
-        tahun_terbit.setText("Tahun Terbit");
-        tahun_terbit.addFocusListener(new java.awt.event.FocusAdapter() {
+        tahunTerbit.setBackground(new java.awt.Color(208, 239, 239));
+        tahunTerbit.setForeground(new java.awt.Color(153, 153, 153));
+        tahunTerbit.setText("Tahun Terbit");
+        tahunTerbit.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                tahun_terbitFocusGained(evt);
+                tahunTerbitFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                tahun_terbitFocusLost(evt);
+                tahunTerbitFocusLost(evt);
             }
         });
 
@@ -202,15 +215,15 @@ public class Buku extends javax.swing.JFrame {
             }
         });
 
-        jumlah_buku.setBackground(new java.awt.Color(208, 239, 239));
-        jumlah_buku.setForeground(new java.awt.Color(153, 153, 153));
-        jumlah_buku.setText("Jumlah Buku");
-        jumlah_buku.addFocusListener(new java.awt.event.FocusAdapter() {
+        jumlahBuku.setBackground(new java.awt.Color(208, 239, 239));
+        jumlahBuku.setForeground(new java.awt.Color(153, 153, 153));
+        jumlahBuku.setText("Jumlah Buku");
+        jumlahBuku.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jumlah_bukuFocusGained(evt);
+                jumlahBukuFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jumlah_bukuFocusLost(evt);
+                jumlahBukuFocusLost(evt);
             }
         });
 
@@ -234,55 +247,55 @@ public class Buku extends javax.swing.JFrame {
 
         cari.setForeground(new java.awt.Color(153, 153, 153));
 
-        jButton1.setText("Cari");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCari.setText("Cari");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCariActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Simpan");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSimpan.setBackground(new java.awt.Color(0, 0, 0));
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSimpanActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Hapus");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnHapus.setBackground(new java.awt.Color(0, 0, 0));
+        btnHapus.setForeground(new java.awt.Color(255, 255, 255));
+        btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnHapusActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Edit");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnEdit.setBackground(new java.awt.Color(0, 0, 0));
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnEditActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(0, 0, 0));
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Bersihkan Form");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnBersih.setBackground(new java.awt.Color(0, 0, 0));
+        btnBersih.setForeground(new java.awt.Color(255, 255, 255));
+        btnBersih.setText("Bersihkan Form");
+        btnBersih.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnBersihActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(0, 0, 0));
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Keluar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnKeluar.setBackground(new java.awt.Color(0, 0, 0));
+        btnKeluar.setForeground(new java.awt.Color(255, 255, 255));
+        btnKeluar.setText("Keluar");
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnKeluarActionPerformed(evt);
             }
         });
 
@@ -301,15 +314,15 @@ public class Buku extends javax.swing.JFrame {
                         .addGap(85, 85, 85)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton2)
+                                .addComponent(btnSimpan)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)
+                                .addComponent(btnHapus)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4)
+                                .addComponent(btnEdit)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton5)
+                                .addComponent(btnBersih)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton6))
+                                .addComponent(btnKeluar))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(118, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -318,20 +331,20 @@ public class Buku extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(judul_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(kode_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tahun_terbit, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tanggal_beli, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tanggal_beli, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(judulBuku, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                                .addComponent(kodeBuku, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                                .addComponent(tahunTerbit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(penerbit)
                                 .addComponent(pengarang)
-                                .addComponent(jumlah_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jumlahBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(btnCari)))
                 .addGap(126, 126, 126))
         );
         jPanel1Layout.setVerticalGroup(
@@ -341,33 +354,33 @@ public class Buku extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kode_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kodeBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(penerbit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(judul_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(judulBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pengarang, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tahun_terbit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jumlah_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tahunTerbit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jumlahBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(7, 7, 7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tanggal_beli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cari, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnCari))
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(btnSimpan)
+                    .addComponent(btnHapus)
+                    .addComponent(btnEdit)
+                    .addComponent(btnBersih)
+                    .addComponent(btnKeluar))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -385,82 +398,84 @@ public class Buku extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void judul_bukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_judul_bukuActionPerformed
+    private void judulBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_judulBukuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_judul_bukuActionPerformed
+    }//GEN-LAST:event_judulBukuActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCariActionPerformed
 
-    private void kode_bukuFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_kode_bukuFocusGained
+    private void kodeBukuFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_kodeBukuFocusGained
         // TODO add your handling code here:
-        if ("Kode Buku".equals(kode_buku.getText())) {
-            kode_buku.setText("");
-            kode_buku.setForeground(new Color(0, 0, 0));
+        if ("Kode Buku".equals(kodeBuku.getText())) {
+            kodeBuku.setText("");
+            kodeBuku.setForeground(new Color(0, 0, 0));
         }
-    }//GEN-LAST:event_kode_bukuFocusGained
+    }//GEN-LAST:event_kodeBukuFocusGained
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
+        tanggal();
+        System.out.println(tanggal_beli);
         try{
             Statement state = handler_class.Koneksi.konek().createStatement();
-            String sql = "INSERT INTO buku VALUES ('"+kode_buku.getText()+"','"+judul_buku.getText()+"'"
-                    + ",'"+tanggal_beli.getDateFormatString()+"','"+pengarang.getText()+"',"
-                    + "'"+penerbit.getText()+"','"+Integer.parseInt(tahun_terbit.getText())+"',"
-                    + "'"+Integer.parseInt(jumlah_buku.getText())+"')";
+            String sql = "INSERT INTO buku VALUES ('"+kodeBuku.getText()+"','"+judulBuku.getText()+"'"
+                    + ",'"+nilaiTanggal+"','"+pengarang.getText()+"',"
+                    + "'"+penerbit.getText()+"','"+Integer.parseInt(tahunTerbit.getText())+"',"
+                    + "'"+Integer.parseInt(jumlahBuku.getText())+"')";
             state.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Tersimpan");
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Data Tidak Tersimpan");
+            JOptionPane.showMessageDialog(null, "Data Tidak Tersimpan"+e.getMessage());
         }
         loadTable();
         kosong();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSimpanActionPerformed
 
-    private void kode_bukuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_kode_bukuFocusLost
+    private void kodeBukuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_kodeBukuFocusLost
         // TODO add your handling code here:
-        if ("".equals(kode_buku.getText())) {
+        if ("".equals(kodeBuku.getText())) {
 
-            kode_buku.setText("Kode Buku");
-            kode_buku.setForeground(new Color(153, 153, 153));
+            kodeBuku.setText("Kode Buku");
+            kodeBuku.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_kode_bukuFocusLost
+    }//GEN-LAST:event_kodeBukuFocusLost
 
-    private void judul_bukuFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_judul_bukuFocusGained
+    private void judulBukuFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_judulBukuFocusGained
         // TODO add your handling code here:
-        if ("Judul Buku".equals(judul_buku.getText())) {
-            judul_buku.setText("");
-            judul_buku.setForeground(new Color(0, 0, 0));
+        if ("Judul Buku".equals(judulBuku.getText())) {
+            judulBuku.setText("");
+            judulBuku.setForeground(new Color(0, 0, 0));
         }
-    }//GEN-LAST:event_judul_bukuFocusGained
+    }//GEN-LAST:event_judulBukuFocusGained
 
-    private void judul_bukuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_judul_bukuFocusLost
+    private void judulBukuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_judulBukuFocusLost
         // TODO add your handling code here:
-        if ("".equals(judul_buku.getText())) {
+        if ("".equals(judulBuku.getText())) {
 
-            judul_buku.setText("Judul Buku");
-            judul_buku.setForeground(new Color(153, 153, 153));
+            judulBuku.setText("Judul Buku");
+            judulBuku.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_judul_bukuFocusLost
+    }//GEN-LAST:event_judulBukuFocusLost
 
-    private void tahun_terbitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tahun_terbitFocusGained
+    private void tahunTerbitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tahunTerbitFocusGained
         // TODO add your handling code here:
-        if ("Tahun Terbit".equals(tahun_terbit.getText())) {
-            tahun_terbit.setText("");
-            tahun_terbit.setForeground(new Color(0, 0, 0));
+        if ("Tahun Terbit".equals(tahunTerbit.getText())) {
+            tahunTerbit.setText("");
+            tahunTerbit.setForeground(new Color(0, 0, 0));
         }
-    }//GEN-LAST:event_tahun_terbitFocusGained
+    }//GEN-LAST:event_tahunTerbitFocusGained
 
-    private void tahun_terbitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tahun_terbitFocusLost
+    private void tahunTerbitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tahunTerbitFocusLost
         // TODO add your handling code here:
-        if ("".equals(tahun_terbit.getText())) {
+        if ("".equals(tahunTerbit.getText())) {
 
-            tahun_terbit.setText("Tahun Terbit");
-            tahun_terbit.setForeground(new Color(153, 153, 153));
+            tahunTerbit.setText("Tahun Terbit");
+            tahunTerbit.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_tahun_terbitFocusLost
+    }//GEN-LAST:event_tahunTerbitFocusLost
 
     private void penerbitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_penerbitFocusGained
         // TODO add your handling code here:
@@ -496,28 +511,28 @@ public class Buku extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pengarangFocusLost
 
-    private void jumlah_bukuFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jumlah_bukuFocusGained
+    private void jumlahBukuFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jumlahBukuFocusGained
         // TODO add your handling code here:
-        if ("Jumlah Buku".equals(jumlah_buku.getText())) {
-            jumlah_buku.setText("");
-            jumlah_buku.setForeground(new Color(0, 0, 0));
+        if ("Jumlah Buku".equals(jumlahBuku.getText())) {
+            jumlahBuku.setText("");
+            jumlahBuku.setForeground(new Color(0, 0, 0));
         }
-    }//GEN-LAST:event_jumlah_bukuFocusGained
+    }//GEN-LAST:event_jumlahBukuFocusGained
 
-    private void jumlah_bukuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jumlah_bukuFocusLost
+    private void jumlahBukuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jumlahBukuFocusLost
         // TODO add your handling code here:
-        if ("".equals(jumlah_buku.getText())) {
+        if ("".equals(jumlahBuku.getText())) {
 
-            jumlah_buku.setText("Jumlah Buku");
-            jumlah_buku.setForeground(new Color(153, 153, 153));
+            jumlahBuku.setText("Jumlah Buku");
+            jumlahBuku.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_jumlah_bukuFocusLost
+    }//GEN-LAST:event_jumlahBukuFocusLost
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
         try{
             Statement state = handler_class.Koneksi.konek().createStatement();
-            String sql = "delete from buku where kode_buku = '"+kode_buku.getText()+"'";
+            String sql = "delete from buku where kode_buku = '"+kodeBuku.getText()+"'";
             state.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Dihapus");
         }catch (Exception e){
@@ -525,45 +540,47 @@ public class Buku extends javax.swing.JFrame {
         }
         loadTable();
         kosong();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnHapusActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
+        tanggal();
+        System.out.println(nilaiTanggal);
         try{
             Statement state = handler_class.Koneksi.konek().createStatement();
-            String sql = "update buku set judul_buku='"+judul_buku.getText()+"',"
-                    + "tanggal_beli='"+tanggal_beli.getDateFormatString().toString()+"',penerbit='"+penerbit.getText()+"',"
-                    + "pengarang='"+pengarang.getText()+"',tahun_terbit='"+Integer.parseInt(tahun_terbit.getText())+"',"
-                    + "jumlah_buku='"+Integer.parseInt(jumlah_buku.getText())+"' where kode_buku='"+kode_buku.getText()+"'";
+            String sql = "update buku set judul_buku='"+judulBuku.getText()+"',"
+                    + "tanggal_beli='"+nilaiTanggal+"',penerbit='"+penerbit.getText()+"',"
+                    + "pengarang='"+pengarang.getText()+"',tahun_terbit='"+Integer.parseInt(tahunTerbit.getText())+"',"
+                    + "jumlah_buku='"+Integer.parseInt(jumlahBuku.getText())+"' where kode_buku='"+kodeBuku.getText()+"'";
             state.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Di Edit");
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Data Tidak Di Edit");
+            JOptionPane.showMessageDialog(null, "Data Tidak Di Edit"+e.getMessage());
         }
         loadTable();
         kosong();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnEditActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnBersihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBersihActionPerformed
         // TODO add your handling code here:
         kosong();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnBersihActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
         // TODO add your handling code here:
         new MenuUtamaSuperAdmin().show();
         dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnKeluarActionPerformed
 
     private void tabledorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabledorMouseClicked
         // TODO add your handling code here:
         int baris = tabledor.rowAtPoint(evt.getPoint());
         String kodebuku = tabledor.getValueAt(baris, 0).toString();
-        kode_buku.setText(kodebuku);
-        kode_buku.setForeground(new Color(0, 0, 0));
+        kodeBuku.setText(kodebuku);
+        kodeBuku.setForeground(new Color(0, 0, 0));
         String jdlbuku = tabledor.getValueAt(baris, 1).toString();
-        judul_buku.setText(jdlbuku);
-        judul_buku.setForeground(new Color(0, 0, 0));
+        judulBuku.setText(jdlbuku);
+        judulBuku.setForeground(new Color(0, 0, 0));
         String tgl_beli = tabledor.getValueAt(baris, 2).toString();
         tanggal_beli.setDateFormatString(tgl_beli);
         tanggal_beli.setForeground(new Color(0, 0, 0));
@@ -574,11 +591,11 @@ public class Buku extends javax.swing.JFrame {
         pengarang.setText(pengaraang);
         pengarang.setForeground(new Color(0, 0, 0));
         String thn_ternit = tabledor.getValueAt(baris, 5).toString();
-        tahun_terbit.setText(thn_ternit);
-        tahun_terbit.setForeground(new Color(0, 0, 0));
+        tahunTerbit.setText(thn_ternit);
+        tahunTerbit.setForeground(new Color(0, 0, 0));
         String jmlh = tabledor.getValueAt(baris, 6).toString();
-        jumlah_buku.setText(jmlh);
-        jumlah_buku.setForeground(new Color(0, 0, 0));
+        jumlahBuku.setText(jmlh);
+        jumlahBuku.setForeground(new Color(0, 0, 0));
     }//GEN-LAST:event_tabledorMouseClicked
 
     private void tanggal_beliFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tanggal_beliFocusGained
@@ -624,24 +641,24 @@ public class Buku extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBersih;
+    private javax.swing.JButton btnCari;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnKeluar;
+    private javax.swing.JButton btnSimpan;
     private javax.swing.JTextField cari;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField judul_buku;
-    private javax.swing.JTextField jumlah_buku;
-    private javax.swing.JTextField kode_buku;
+    private javax.swing.JTextField judulBuku;
+    private javax.swing.JTextField jumlahBuku;
+    private javax.swing.JTextField kodeBuku;
     private javax.swing.JTextField penerbit;
     private javax.swing.JTextField pengarang;
     private javax.swing.JTable tabledor;
-    private javax.swing.JTextField tahun_terbit;
+    private javax.swing.JTextField tahunTerbit;
     private com.toedter.calendar.JDateChooser tanggal_beli;
     // End of variables declaration//GEN-END:variables
 }
