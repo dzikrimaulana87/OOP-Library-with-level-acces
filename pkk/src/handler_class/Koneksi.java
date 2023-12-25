@@ -11,7 +11,7 @@ public class Koneksi {
         try {
             if (konek == null) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                konek = DriverManager.getConnection("jdbc:mysql://localhost:3306/pkk", "root", "");
+                konek = DriverManager.getConnection("jdbc:mysql://localhost:3306/masih_belajar", "root", "");
                 System.out.println("Koneksi berhasil!");
             }
             return konek;

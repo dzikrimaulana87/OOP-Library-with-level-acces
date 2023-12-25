@@ -693,10 +693,35 @@ public final class Pengembalian extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHitungDendaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
         // TODO add your handling code here:
         try {
-            Statement state = handler_class.Koneksi.konek().createStatement();
-            String sql = "delete from pengembalian where kode_pengembalian= '" + kodePengembalian.getText() + "'";
+            Connection connection = handler_class.Koneksi.konek();
+            Statement state = connection.createStatement();
+
+            // Ambil data jumlah_buku yang dikembalikan dari tabel pengembalian
+            ResultSet rs = state.executeQuery("SELECT jumlah_buku, kode_buku FROM pengembalian WHERE kode_pengembalian = '" + kodePengembalian.getText() + "'");
+            int jumlahBukuKembali = 0;
+            String kodeBuku = "";
+            if (rs.next()) {
+                jumlahBukuKembali = rs.getInt("jumlah_buku");
+                kodeBuku = rs.getString("kode_buku");
+            }
+
+            // Ambil jumlah_buku yang tersedia di tabel buku
+            rs = state.executeQuery("SELECT jumlah_buku FROM buku WHERE kode_buku = '" + kodeBuku + "'");
+            int jumlahBukuSekarang = 0;
+            if (rs.next()) {
+                jumlahBukuSekarang = rs.getInt("jumlah_buku");
+            }
+
+            // Update jumlah buku yang tersedia di tabel buku
+            int jumlahBukuTerbaru = jumlahBukuSekarang - jumlahBukuKembali;
+            String updateBukuSQL = "UPDATE buku SET jumlah_buku = " + jumlahBukuTerbaru + " WHERE kode_buku = '" + kodeBuku + "'";
+            state.executeUpdate(updateBukuSQL);
+
+            // Hapus data dari tabel pengembalian
+            String sql = "DELETE FROM pengembalian WHERE kode_pengembalian = '" + kodePengembalian.getText() + "'";
             state.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Dihapus");
         } catch (Exception e) {
@@ -704,6 +729,8 @@ public final class Pengembalian extends javax.swing.JFrame {
         }
         load_table();
         kosong();
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
