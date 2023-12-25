@@ -225,7 +225,7 @@ public class Petugas extends javax.swing.JFrame implements AccesSuperAdmin{
 
         btnReset.setBackground(new java.awt.Color(0, 0, 0));
         btnReset.setForeground(new java.awt.Color(255, 255, 255));
-        btnReset.setText("Reset");
+        btnReset.setText("Bersihkan Form");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
