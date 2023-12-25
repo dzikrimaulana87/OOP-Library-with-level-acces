@@ -64,7 +64,7 @@ public class Siswa extends javax.swing.JFrame {
         
         try{
             Statement state= handler_class.Koneksi.konek().createStatement();
-            String sql = "select * from siswa WHERE nama LIKE '%"+carii+"%'OR kelas LIKE '"+carii+"'" ;
+            String sql = "select * from siswa WHERE nama LIKE '%"+carii+"%'OR nis LIKE '%"+carii+"%'" ;
             ResultSet cari = state.executeQuery(sql);
             
             while (cari.next()){

@@ -52,7 +52,7 @@ public final class Buku extends javax.swing.JFrame {
         
         try{
             Statement state=handler_class.Koneksi.konek().createStatement();
-            String sql = "select * from buku WHERE kode_buku LIKE '%"+carii+"%'OR judul_buku LIKE '"+carii+"'" ;
+            String sql = "select * from buku WHERE kode_buku LIKE '%"+carii+"%'OR judul_buku LIKE '%"+carii+"%'" ;
             ResultSet cari = state.executeQuery(sql);
             
             while (cari.next()){
@@ -408,7 +408,7 @@ public final class Buku extends javax.swing.JFrame {
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         // TODO add your handling code here:
-        
+        cariin();
     }//GEN-LAST:event_btnCariActionPerformed
 
     private void kodeBukuFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_kodeBukuFocusGained

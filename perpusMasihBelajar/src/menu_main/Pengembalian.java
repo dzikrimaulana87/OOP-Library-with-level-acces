@@ -55,7 +55,7 @@ public final class Pengembalian extends javax.swing.JFrame {
 
         try {
             Statement state = handler_class.Koneksi.konek().createStatement();
-            String sql = "select * from pengembalian WHERE kode_pengembalian LIKE '%" + carii + "%'OR judul_buku LIKE '" + carii + "'";
+            String sql = "select * from pengembalian WHERE kode_pengembalian LIKE '%" + carii + "%'OR nama_buku LIKE '%"+carii+"%'";
             ResultSet cari = state.executeQuery(sql);
 
             while (cari.next()) {

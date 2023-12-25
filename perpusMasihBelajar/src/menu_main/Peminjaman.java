@@ -151,8 +151,7 @@ public final class Peminjaman extends javax.swing.JFrame {
 
         try {
             Statement state = handler_class.Koneksi.konek().createStatement();
-            String sql = "select * from peminjaman WHERE kode_peminjaman LIKE '%" + carii + "%'OR judul_buku LIKE '"
-                    + carii + "'";
+            String sql = "select * from peminjaman WHERE kode_peminjaman LIKE '%" + carii + "%'OR judul_buku LIKE '%"+carii+"%'";
             ResultSet cari = state.executeQuery(sql);
 
             while (cari.next()) {
