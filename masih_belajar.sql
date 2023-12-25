@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2020 at 11:18 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.28
+-- Generation Time: Dec 25, 2023 at 01:39 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pkk`
+-- Database: `masih_belajar`
 --
 
 -- --------------------------------------------------------
@@ -36,17 +35,19 @@ CREATE TABLE `buku` (
   `penerbit` varchar(25) NOT NULL,
   `tahun_terbit` int(11) NOT NULL,
   `jumlah_buku` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `buku`
 --
 
 INSERT INTO `buku` (`kode_buku`, `judul_buku`, `tanggal_beli`, `pengarang`, `penerbit`, `tahun_terbit`, `jumlah_buku`) VALUES
-('BIO', 'Ir.Soekarno', '2020-04-13', 'Soekarno ', 'Erlangga', 148, 21),
-('dawd121', 'dawdad', '2020-04-10', 'dawd', 'adadw', 121, 1212),
-('NLV001', 'pkii', '2020-04-01', 'adawd', 'awda', 121, 2121),
-('NVL002', 'Tangga Darurat', '2020-04-14', 'WattPad', 'Reza Riefa', 2020, 11);
+('0', '0', '2023-01-19', '0', '0', 0, 0),
+('0000', '1', '2023-01-12', '1', '1', 1, 0),
+('BIO', 'Ir.Soekarno', '2022-08-05', 'Dzikri', 'Erlangga', 148, 19),
+('dawd121', 'dawdad', '2021-09-02', 'dawd', 'adadw', 121, 1208),
+('NLV001', 'pkii2', '2023-09-01', 'adawd', 'awda', 121, 2121),
+('NVL002', 'Tangga Darurat99', '2020-04-14', 'Reza Riefa', 'WattPad899', 2020, 0);
 
 -- --------------------------------------------------------
 
@@ -64,19 +65,18 @@ CREATE TABLE `peminjaman` (
   `judul_buku` varchar(25) NOT NULL,
   `jumlah_buku` int(11) NOT NULL,
   `id_petugas` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `peminjaman`
 --
 
 INSERT INTO `peminjaman` (`kode_peminjaman`, `tanggal_pinjam`, `nis`, `nama`, `kelas`, `kode_buku`, `judul_buku`, `jumlah_buku`, `id_petugas`) VALUES
-('PE001', '2020-03-02', '17180557', 'Reza', 'XII RPL', 'dawd121', 'dawdad', 1212, '1'),
-('PE002', '2020-03-02', '17180557', 'Reza', 'XII RPL', 'NLV001', 'pki', 2121, '1'),
-('PE003', '2020-03-13', '17180552', 'Reza Chaerul fajri', 'XII RPL', 'BIO', 'Ir.Soekarno', 1, '1'),
-('PE004', '2020-04-13', '17180552', 'Reza Chaerul fajri', 'XII RPL', 'NLV001', 'pki', 1, '1'),
-('PE005', '2020-04-14', '171805432', 'Fajar Alvian', 'XII TKR 1', 'NVL002', 'Tangga Darurat', 2, '4'),
-('PE006', '2020-04-14', '171805432', 'Fajar Alvian', 'XII TKR 1', 'NLV001', 'pkii', 2121, '4');
+('12121212', '2023-12-21', '17180552', 'Reza Chaerul fajri', 'XII RPL', 'dawd121', 'dawdad', 1, '4'),
+('122121', '2023-12-02', '17180556', 'Rizky Fahrureza', 'XII RPL', 'BIO', 'Ir.Soekarno', 1, '4'),
+('13', '2023-12-21', '17180552', 'Reza Chaerul fajri', 'XII RPL', 'dawd121', 'dawdad', 1, '69'),
+('69', '2023-12-20', '17180556', 'Rizky Fahrureza', 'XII RPL', 'dawd121', 'dawdad', 1, '69'),
+('699', '2023-12-25', '171805432', 'Fajar Alvian', 'XII TKR 1', '0000', '1', 1, '55');
 
 -- --------------------------------------------------------
 
@@ -97,16 +97,15 @@ CREATE TABLE `pengembalian` (
   `jumlah_buku` int(11) NOT NULL,
   `keterlambatan` varchar(25) NOT NULL,
   `denda` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pengembalian`
 --
 
 INSERT INTO `pengembalian` (`kode_pengembalian`, `tanggal_pengembalian`, `kode_peminjaman`, `tanggal_pinjam`, `nis`, `nama`, `kelas`, `kode_buku`, `nama_buku`, `jumlah_buku`, `keterlambatan`, `denda`) VALUES
-('PEN001', '2020-04-15', 'PE003', '2020-03-13', 17180552, 'Reza Chaerul fajri', 'XII RPL', 'BIO', 'Ir.Soekarno', 1, '1', 2000),
-('PEN002', '2020-04-16', 'PE001', '2020-03-02', 17180557, 'Reza', 'XII RPL', 'dawd121', 'dawdad', 1212, '2', 4000),
-('PEN003', '2020-04-17', 'PE005', '2020-04-14', 171805432, 'Fajar Alvian', 'XII TKR 1', 'NVL002', 'Tangga Darurat', 2, '1', 2000);
+('P0BIO552', '2023-12-29', '13', '2023-12-20', 17180552, 'Reza Chaerul fajri', 'XII RPL', 'dawd121', 'dawdad', 1, '0', 0),
+('P0dawd121556', '2023-12-22', '69', '2023-12-20', 17180556, 'Rizky Fahrureza', 'XII RPL', 'dawd121', 'dawdad', 1, '0', 0);
 
 -- --------------------------------------------------------
 
@@ -119,8 +118,8 @@ CREATE TABLE `petugas` (
   `nama_petugas` varchar(25) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(25) NOT NULL,
-  `level` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `level` enum('admin','superadmin') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `petugas`
@@ -128,9 +127,11 @@ CREATE TABLE `petugas` (
 
 INSERT INTO `petugas` (`id_petugas`, `nama_petugas`, `username`, `password`, `level`) VALUES
 ('1', 'Riefaa', 'admin', '123', 'admin'),
-('2', 'dede setiabud', 'kepsek', '456', 'kepsek'),
-('3', 'Rizky', 'tarmin007', 'tarmin007', 'admin'),
-('4', 'ahmad', 'ahmad123', 'rplmutu', 'admin');
+('3', 'Rizky', 'tarmin007', 'tarmin007', 'superadmin'),
+('4', 'ahmad', 'ahmad123', 'rplmutu', 'admin'),
+('55', 'Rizal', 'rizal', 'rizal', 'admin'),
+('666', 'sample', 'sample', 'sample', 'superadmin'),
+('69', 'dzikri', 'dzikri', 'dzikri', 'superadmin');
 
 -- --------------------------------------------------------
 
@@ -142,7 +143,7 @@ CREATE TABLE `siswa` (
   `nis` varchar(25) NOT NULL,
   `nama` varchar(25) NOT NULL,
   `kelas` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `siswa`
@@ -178,6 +179,7 @@ ALTER TABLE `peminjaman`
 --
 ALTER TABLE `pengembalian`
   ADD PRIMARY KEY (`kode_pengembalian`),
+  ADD UNIQUE KEY `uique_peminjaman` (`kode_peminjaman`),
   ADD KEY `kode_peminjaman` (`kode_peminjaman`);
 
 --
@@ -202,7 +204,9 @@ ALTER TABLE `siswa`
 ALTER TABLE `peminjaman`
   ADD CONSTRAINT `peminjaman_ibfk_2` FOREIGN KEY (`kode_buku`) REFERENCES `buku` (`kode_buku`),
   ADD CONSTRAINT `peminjaman_ibfk_3` FOREIGN KEY (`nis`) REFERENCES `siswa` (`nis`),
-  ADD CONSTRAINT `peminjaman_ibfk_4` FOREIGN KEY (`id_petugas`) REFERENCES `petugas` (`id_petugas`);
+  ADD CONSTRAINT `peminjaman_ibfk_4` FOREIGN KEY (`id_petugas`) REFERENCES `petugas` (`id_petugas`),
+  ADD CONSTRAINT `peminjaman_ibfk_5` FOREIGN KEY (`nis`) REFERENCES `siswa` (`nis`) ON DELETE CASCADE,
+  ADD CONSTRAINT `peminjaman_ibfk_6` FOREIGN KEY (`nis`) REFERENCES `siswa` (`nis`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `pengembalian`
