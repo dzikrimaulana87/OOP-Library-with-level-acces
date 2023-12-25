@@ -4,6 +4,7 @@
  */
 package menu_main;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.ParseException;
@@ -12,7 +13,6 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu_superadmin.MenuUtamaSuperAdmin;
-
 
 /**
  *
@@ -556,7 +556,25 @@ public final class Pengembalian extends javax.swing.JFrame {
         // TODO add your handling code here:
         tanggal();
         try {
-            Statement state = handler_class.Koneksi.konek().createStatement();
+            Connection connection = handler_class.Koneksi.konek();
+            Statement state = connection.createStatement();
+
+            // Ambil jumlah_buku yang sedang dipinjam dari tabel buku
+            ResultSet rs = state.executeQuery("SELECT jumlah_buku FROM buku WHERE kode_buku = '" + kodeBuku.getText() + "'");
+            int jumlahBukuSekarang = 0;
+            if (rs.next()) {
+                jumlahBukuSekarang = rs.getInt("jumlah_buku");
+            }
+
+            // Hitung jumlah buku yang akan dikembalikan
+            int jumlahBukuKembali = Integer.parseInt(jumlahBuku.getText());
+
+            // Update jumlah buku yang tersedia di tabel buku
+            int jumlahBukuTerbaru = jumlahBukuSekarang + jumlahBukuKembali;
+            String updateBukuSQL = "UPDATE buku SET jumlah_buku = " + jumlahBukuTerbaru + " WHERE kode_buku = '" + kodeBuku.getText() + "'";
+            state.executeUpdate(updateBukuSQL);
+
+            // Insert data ke tabel pengembalian
             String sql = "INSERT INTO pengembalian VALUES ('" + kodePengembalian.getText() + "','" + nilaiTanggal + "','" + kodePeminjaman.getSelectedItem().toString() + "','" + tanggalPeminjaman.getText() + "','" + nis.getText() + "','" + nama.getText() + "','" + kelas.getText() + "','" + kodeBuku.getText() + "','" + judulBuku.getText() + "','" + jumlahBuku.getText() + "','" + keterlambatan.getText() + "','" + denda.getText() + "')";
             state.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Tersimpan");
@@ -576,7 +594,7 @@ public final class Pengembalian extends javax.swing.JFrame {
             state.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Di Edit");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Data Tidak Di Edit"+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Data Tidak Di Edit" + e.getMessage());
         }
         load_table();
         kosong();
@@ -586,12 +604,12 @@ public final class Pengembalian extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userLevel = LoginPanel.userLevel;
         System.out.println(userLevel);
-        if("superadmin".equals(userLevel)){
+        if ("superadmin".equals(userLevel)) {
             new MenuUtamaSuperAdmin().show();
             dispose();
-        }else{
-        new MenuUtama().show();
-        dispose();
+        } else {
+            new MenuUtama().show();
+            dispose();
         }
     }//GEN-LAST:event_btnKeluarActionPerformed
 
@@ -645,43 +663,43 @@ public final class Pengembalian extends javax.swing.JFrame {
         tanggal(); // Pastikan nilai tanggalPeminjaman dan tanggalPengembalian telah diatur sebelum digunakan.
 
 // Ambil tanggal peminjaman dan tanggal pengembalian dari komponen UI
-String tanggalPeminjamanStr = tanggalPeminjaman.getText();
-Date tanggalPengembalianDate = tanggalPengembalian.getDate();
+        String tanggalPeminjamanStr = tanggalPeminjaman.getText();
+        Date tanggalPengembalianDate = tanggalPengembalian.getDate();
 
 // Format tanggal menggunakan SimpleDateFormat
-SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-try {
-    // Parsing tanggal peminjaman
-    Date tanggalPeminjamanDate = dateFormat.parse(tanggalPeminjamanStr);
+        try {
+            // Parsing tanggal peminjaman
+            Date tanggalPeminjamanDate = dateFormat.parse(tanggalPeminjamanStr);
 
-    // Hitung selisih hari antara tanggal peminjaman dan tanggal kembali
-    long selisihMillis = tanggalPengembalianDate.getTime() - tanggalPeminjamanDate.getTime();
-    long selisihHari = selisihMillis / (24 * 60 * 60 * 1000);
+            // Hitung selisih hari antara tanggal peminjaman dan tanggal kembali
+            long selisihMillis = tanggalPengembalianDate.getTime() - tanggalPeminjamanDate.getTime();
+            long selisihHari = selisihMillis / (24 * 60 * 60 * 1000);
 
-    // Cek apakah selisih hari lebih dari 30
-    long keterlambatanval = Math.max(0, selisihHari - 30);
-    double dendaval = keterlambatanval * 5000;
+            // Cek apakah selisih hari lebih dari 30
+            long keterlambatanval = Math.max(0, selisihHari - 30);
+            double dendaval = keterlambatanval * 5000;
 
-    // Set nilai keterlambatan ke komponen UI (keterlambatan)
-    keterlambatan.setText(String.valueOf(keterlambatanval));
-    denda.setText(String.valueOf(dendaval));
-} catch (ParseException ex) {
-    ex.printStackTrace();
-    JOptionPane.showMessageDialog(null, "Format tanggal tidak valid");
-}
+            // Set nilai keterlambatan ke komponen UI (keterlambatan)
+            keterlambatan.setText(String.valueOf(keterlambatanval));
+            denda.setText(String.valueOf(dendaval));
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Format tanggal tidak valid");
+        }
 
 
     }//GEN-LAST:event_btnHitungDendaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        try{
-        Statement state = handler_class.Koneksi.konek().createStatement();
-        String sql = "delete from pengembalian where kode_pengembalian= '"+kodePengembalian.getText()+"'";
-        state.executeUpdate(sql);
-        JOptionPane.showMessageDialog(null, "Data Dihapus");
-        }catch (Exception e){
+        try {
+            Statement state = handler_class.Koneksi.konek().createStatement();
+            String sql = "delete from pengembalian where kode_pengembalian= '" + kodePengembalian.getText() + "'";
+            state.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Data Dihapus");
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Data Gagal Dihapus");
         }
         load_table();
